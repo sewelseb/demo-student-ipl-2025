@@ -13,6 +13,10 @@ app.get('/', (_req, res) => {
   res.send('Hello tt le monde');
 });
 
+app.get('/ju', (_req, res) => {
+  res.send('Hello tt le monde');
+});
+
 //test 
 
 app.get('/dev1', (_req, res) => {
