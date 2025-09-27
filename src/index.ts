@@ -16,8 +16,10 @@ app.get('/', (_req, res) => {
 app.get('/ju', (_req, res) => {
   res.send('Hello tt le monde');
 });
-
-//test 
+//test
+app.get('/dev3', (_req, res) => {
+  res.send('Hello tt le monde');
+});
 
 app.get('/dev1', (_req, res) => {
   res.send('Hello Dev1!');
