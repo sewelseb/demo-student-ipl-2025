@@ -1,6 +1,8 @@
 // src/index.ts
 import express from 'express';
 
+import {tasksController} from './controllers/tasks.controller';
+
 const app = express();
 const port = 3000;
 
@@ -9,6 +11,10 @@ app.use(express.json());
 app.get('/', (_req, res) => {
   res.send('Hello TypeScript + Express!');
 });
+
+// use the controller to use the route
+app.use('/tasks', tasksController);
+
 app.get('/', (_req, res) => {
   res.send('Hello tt le monde');
 });
