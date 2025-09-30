@@ -25,6 +25,10 @@ app.get('/jujuju', (_req, res) => {
   res.send('Hello tt le monde');
 });
 
+app.get('/toto', (_req, res) => {
+  res.send('Hello tt le monde');
+});
+
 
 app.get('/dev3', (_req, res) => {
   res.send('Hello tt le monde');
