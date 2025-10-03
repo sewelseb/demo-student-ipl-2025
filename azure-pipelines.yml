@@ -30,9 +30,9 @@ steps:
     failTaskOnFailedTests: true
   displayName: 'Publish Results on Azure DevOps interface'
 
-script: npm run build
-    displayName: 'Build the project'
-    condition: succeeded() # Build si seulement les tests sont passés
+- script: npm run build
+  displayName: 'Build the project'
+  condition: succeeded() # Build si seulement les tests sont passés
 
 - task: ArchiveFiles@2
   inputs:
