@@ -21,14 +21,6 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: |
-    echo "hello world"
-  displayName: "Hello World !"
-
-- script: |
-    find . -exec touch {} +
-  displayName: 'Reset file timestamps'
-
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
