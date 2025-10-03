@@ -9,7 +9,7 @@ const port = 8080;
 app.use(express.json());
 
 app.get('/', (_req, res) => {
-  res.send('Hello TypeScript + Express!');
+  res.send('Hello TypeScript + Express GEEENIAAAAALLLLL!');
 });
 
 app.listen(port, () => {
