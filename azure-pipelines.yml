@@ -34,18 +34,22 @@ steps:
   displayName: 'Build the project'
   condition: succeeded() # Build si seulement les tests sont passés
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
-    replaceExistingArchive: true
-    contents: |
-      dist/**
-      package.json
+#- task: ArchiveFiles@2
+#  inputs:
+#    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+#    replaceExistingArchive: true
+#  displayName: 'Archive dist and package.json'
+#  condition: succeeded()  # Archive seulement si tout a réussi avant
+
+- script: |
+    echo "Creating archive with dist/ and package.json"
+    zip -r $(buildDir)/$(archiveName) dist package.json
   displayName: 'Archive dist and package.json'
   condition: succeeded()  # Archive seulement si tout a réussi avant
+
 
 - task: AzureRmWebAppDeployment@5
   inputs:
