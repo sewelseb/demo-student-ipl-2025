@@ -7,6 +7,7 @@ const app = express();
 const port = 8080;
 
 app.use(express.json());
+app.use('/tasks', tasksController); 
 
 app.get('/', (_req, res) => {
   res.send('Hello TypeScript + Express GEEENIAAAAALLLLL!');
