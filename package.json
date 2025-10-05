@@ -9,12 +9,13 @@
     "dev": "ts-node-dev --respawn src src/index.ts",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:debug": "jest --detectOpenHandles --runInBand"
+    "test:debug": "jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   },
   "devDependencies": {
