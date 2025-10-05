@@ -9,6 +9,7 @@ pool:
 variables:
   appName: 'testoch'
   azureSubscription: 'Azure for Students(a6b57087-18b9-45e4-bd4d-01991a1e0f25)'  # Remplace par le nom exact de ta connexion de service
+  tempArchiveDir: '$(Build.ArtifactStagingDirectory)/archive-content'
 
 steps:
 - task: NodeTool@0
@@ -34,13 +35,21 @@ steps:
   displayName: 'Build the project'
   condition: succeeded() # Build si seulement les tests sont passés
 
+
+# Prepare build to deploy : Copy only dist/ et package.json 
+- script: |
+    mkdir -p $(tempArchiveDir)
+    cp -r dist $(tempArchiveDir)/
+    cp package.json $(tempArchiveDir)/
+  displayName: 'Prepare clean archive folder'
+
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    #rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    rootFolderOrFile: '$(tempArchiveDir)'
     includeRootFolder: false
     archiveType: 'zip'
-    #archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
-    archiveFile: '$(buildDir)/$(archiveName)'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
     replaceExistingArchive: true
   displayName: 'Archive dist and package.json'
   condition: succeeded()  # Archive seulement si tout a réussi avant
