@@ -7,5 +7,5 @@
     "esModuleInterop": true,
     "strict": true
   },
-  "include": ["src/**/*.ts", "tests/tasks.controller.test.ts"], // ensure to include only files in src
+  "include": ["src/**/*.ts"], // ensure to include only files in src
 }
