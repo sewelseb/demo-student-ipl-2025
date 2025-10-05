@@ -41,6 +41,10 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
     replaceExistingArchive: true
+    contents: |
+      dist/**
+      package.json
+  displayName: 'Archive dist and package.json'
   condition: succeeded()  # Archive seulement si tout a réussi avant
 
 - task: AzureRmWebAppDeployment@5
