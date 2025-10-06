@@ -37,16 +37,16 @@ steps:
 
 
 # Prepare build to deploy : Copy only dist/ et package.json 
-- script: |
-    mkdir -p $(tempArchiveDir)
-    cp -r dist $(tempArchiveDir)/
-    cp package.json $(tempArchiveDir)/
-  displayName: 'Prepare clean archive folder'
+#- script: |
+#    mkdir -p $(tempArchiveDir)
+#    cp -r dist $(tempArchiveDir)/
+#    cp package.json $(tempArchiveDir)/
+#  displayName: 'Prepare clean archive folder'
 
 - task: ArchiveFiles@2
   inputs:
-    #rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    rootFolderOrFile: '$(tempArchiveDir)'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    #rootFolderOrFile: '$(tempArchiveDir)'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
